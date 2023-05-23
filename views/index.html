@@ -44,8 +44,8 @@
         $('#convertForm').submit(function(event) {
           event.preventDefault();
           $.ajax({
-            url: '/api/convert',
-            type: 'get',
+            url: '/',
+            type: 'post',
             data: $('#convertForm').serialize(),
             success: function(data) {
               $('#result').text(data.string || data);

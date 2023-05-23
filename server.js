@@ -5,10 +5,11 @@ const bodyParser  = require('body-parser');
 const expect      = require('chai').expect;
 const cors        = require('cors');
 require('dotenv').config();
-
 const apiRoutes         = require('./routes/api.js');
 const fccTestingRoutes  = require('./routes/fcctesting.js');
 const runner            = require('./test-runner');
+const unitsConverts = require('./conversions/metricUnits.js');
+
 
 let app = express();
 
@@ -29,7 +30,7 @@ app.route('/')
 fccTestingRoutes(app);
 
 //Routing for API 
-apiRoutes(app);  
+apiRoutes(app);
     
 //404 Not Found Middleware
 app.use(function(req, res, next) {
@@ -38,7 +39,7 @@ app.use(function(req, res, next) {
     .send('Not Found');
 });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
 
 //Start our server and tests!
 app.listen(port, function () {
